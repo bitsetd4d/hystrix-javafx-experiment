@@ -16,6 +16,16 @@ public class ExperimentControllerImpl implements ExperimentController {
     private final TaskConfiguration taskConfiguration = new TaskConfigurationImpl();
     private final HystrixExperimentConfiguration hystrixExperimentConfiguration = new HystrixExperimentConfigurationImpl();
 
+    @Override
+    public void start() {
+        setRunning(true);
+    }
+
+    @Override
+    public void stop() {
+        setRunning(false);
+    }
+
     // --------------------------------
     // Running
     // --------------------------------
