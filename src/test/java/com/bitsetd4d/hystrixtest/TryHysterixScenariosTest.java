@@ -52,8 +52,8 @@ public class TryHysterixScenariosTest {
         groupKey = UUID.randomUUID().toString();
         ConfigurationManager.getConfigInstance().clear();
         ConfigurationManager.getConfigInstance().setProperty(String.format("hystrix.threadpool.%s.coreSize", groupKey), String.valueOf(threads));
-        ConfigurationManager.getConfigInstance().setProperty(String.format("hystrix.command.default.execution.isolation.semaphore.maxConcurrentRequests"), String.valueOf(threads));
-        ConfigurationManager.getConfigInstance().setProperty(String.format("hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests"), String.valueOf(threads));
+        ConfigurationManager.getConfigInstance().setProperty("hystrix.command.default.execution.isolation.semaphore.maxConcurrentRequests", String.valueOf(threads));
+        ConfigurationManager.getConfigInstance().setProperty("hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests", String.valueOf(threads));
         ConfigurationManager.getConfigInstance().setProperty(String.format("hystrix.command.%s-%s.execution.isolation.thread.timeoutInMilliseconds", groupKey, COMMAND_NAME), String.valueOf(TIMEOUT));
         ConfigurationManager.getConfigInstance().setProperty(String.format("hystrix.command.%s-%s.circuitBreaker.enabled", groupKey, COMMAND_NAME), "false");
         com.netflix.hystrix.Hystrix.reset();
@@ -108,7 +108,7 @@ public class TryHysterixScenariosTest {
         System.out.println("---------------------------------------");
         System.out.println(scenario);
         System.out.println("---------------------------------------");
-        testResults.forEach(r -> System.out.println(r));
+        testResults.forEach(System.out::println);
         System.out.println();
         OptionalInt min = testResults.stream().mapToInt(r -> r.timeToExecute).min();
         OptionalInt max = testResults.stream().mapToInt(r -> r.timeToExecute).max();
