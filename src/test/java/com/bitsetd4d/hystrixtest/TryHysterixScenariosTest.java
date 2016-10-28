@@ -19,7 +19,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class TryHysterixScenariosTest {
 
     private static final String COMMAND_NAME = "executesCommand";
-    public static final int TIMEOUT = 2000;
+    private static final int TIMEOUT = 2000;
 
     private String groupKey;
 
@@ -36,7 +36,6 @@ public class TryHysterixScenariosTest {
     }
 
     private void setupTest() {
-        //executorService = Executors.newFixedThreadPool(threads, r -> new Thread("MAIN-THREAD-"+System.nanoTime()));
         executorService = Executors.newFixedThreadPool(threads);
         submitCountdownLatch = new CountDownLatch(threads);
         testResults = new CopyOnWriteArrayList<>();

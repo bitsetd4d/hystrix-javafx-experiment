@@ -1,10 +1,12 @@
 package com.bitsetd4d.controller.internal;
 
 import com.bitsetd4d.controller.ExperimentConfiguration;
+import com.bitsetd4d.controller.ExperimentMetrics;
 import com.bitsetd4d.controller.HystrixExperimentConfiguration;
 import com.bitsetd4d.controller.TaskConfiguration;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,5 +53,16 @@ public class ExperimentControllerImplTest {
         ExperimentConfiguration configuration = controller.getExperimentConfiguration();
         assertThat(configuration, notNullValue());
         assertThat(configuration, sameInstance(controller.getExperimentConfiguration()));
+    }
+
+    @Test
+    public void getExperimentMetrics() throws Exception {
+        SimpleObjectProperty<ExperimentMetrics> myProperty = new SimpleObjectProperty<>();
+        myProperty.bind(controller.experimentMetricsProperty());
+
+        ExperimentMetrics experimentMetrics = myProperty.get();
+        assertThat(experimentMetrics, is(notNullValue()));
+        assertThat(controller.getExperimentMetrics(), equalTo(experimentMetrics));
+        assertThat(controller.experimentMetricsProperty().get(), equalTo(experimentMetrics));
     }
 }
