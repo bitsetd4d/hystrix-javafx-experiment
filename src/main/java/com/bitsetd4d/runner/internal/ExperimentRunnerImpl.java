@@ -8,6 +8,7 @@ import com.bitsetd4d.runner.ExperimentCommandProvider;
 import com.bitsetd4d.runner.ExperimentRunner;
 import com.netflix.hystrix.HystrixCommand;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -28,6 +29,7 @@ public class ExperimentRunnerImpl implements ExperimentRunner {
 
     private ThrottledResultNotifier resultNotifier = new ThrottledResultNotifier();
 
+    @Inject
     public ExperimentRunnerImpl(ExecutorServiceProvider executorServiceProvider, ExperimentCommandProvider experimentCommandProvider) {
         this.executorServiceProvider = executorServiceProvider;
         this.experimentCommandProvider = experimentCommandProvider;
