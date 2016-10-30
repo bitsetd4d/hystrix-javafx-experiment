@@ -20,4 +20,10 @@ public interface ExperimentRunner {
     void setTasks(int tasks);
 
     ExperimentMetrics getMetrics();
+
+    void setListener(ResultsListener listener);
+
+    interface ResultsListener {
+        void onResults(List<CommandResult> results);
+    }
 }

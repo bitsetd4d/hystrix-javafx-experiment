@@ -65,4 +65,9 @@ public class ExperimentControllerImplTest {
         assertThat(controller.getExperimentMetrics(), equalTo(experimentMetrics));
         assertThat(controller.experimentMetricsProperty().get(), equalTo(experimentMetrics));
     }
+
+    @Test
+    public void getExperimentResults() throws Exception {
+        assertThat(controller.experimentResultListProperty(), notNullValue());
+    }
 }

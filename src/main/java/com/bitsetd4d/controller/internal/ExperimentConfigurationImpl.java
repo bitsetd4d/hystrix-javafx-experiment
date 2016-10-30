@@ -6,8 +6,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class ExperimentConfigurationImpl implements ExperimentConfiguration {
 
-    private final IntegerProperty threadsProperty = new SimpleIntegerProperty();
-    private final IntegerProperty tasksProperty = new SimpleIntegerProperty();
+    private final IntegerProperty threadsProperty = new SimpleIntegerProperty(this, "threads");
+    private final IntegerProperty tasksProperty = new SimpleIntegerProperty(this, "tasks");
 
     // --------------------------------
     // Threads

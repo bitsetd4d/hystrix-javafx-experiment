@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HystrixExperimentConfigurationImpl implements HystrixExperimentConfiguration {
 
-    private final ObjectProperty<List<String>> hystrixConfigProperty = new SimpleObjectProperty<>();
+    private final ObjectProperty<List<String>> hystrixConfigProperty = new SimpleObjectProperty<>(this, "hystrixConfig");
 
     @Override
     public final void setHystrixConfig(List<String> configuration) {

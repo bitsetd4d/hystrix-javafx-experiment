@@ -2,17 +2,15 @@ package com.bitsetd4d.controller.internal;
 
 import com.bitsetd4d.controller.*;
 import com.google.common.annotations.VisibleForTesting;
-import javafx.beans.property.ReadOnlyBooleanProperty;
-import javafx.beans.property.ReadOnlyBooleanWrapper;
-import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.*;
 
 public class ExperimentControllerImpl implements ExperimentController {
 
-    private final ReadOnlyBooleanWrapper readOnlyBooleanWrapper = new ReadOnlyBooleanWrapper();
+    private final ReadOnlyBooleanWrapper readOnlyBooleanWrapper = new ReadOnlyBooleanWrapper(this, "readOnly");
+    private final ListProperty<ExperimentResult> experimentResults = new SimpleListProperty<>(this, "experimentResults");
 
     private final ReadOnlyObjectWrapper<ExperimentMetrics> readOnlyExperimentMetricsWrapper
-            = new ReadOnlyObjectWrapper<>(ExperimentMetricsImpl.ZERO);
+            = new ReadOnlyObjectWrapper<>(this, "experimentMetrics", ExperimentMetricsImpl.ZERO);
 
     private final ExperimentConfiguration experimentConfiguration = new ExperimentConfigurationImpl();
     private final TaskConfiguration taskConfiguration = new TaskConfigurationImpl();
@@ -54,6 +52,11 @@ public class ExperimentControllerImpl implements ExperimentController {
     @VisibleForTesting
     void setRunning(boolean running) {
         readOnlyBooleanWrapper.set(running);
+    }
+
+    @Override
+    public ListProperty<ExperimentResult> experimentResultListProperty() {
+        return experimentResults;
     }
 
     // --------------------------------

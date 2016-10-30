@@ -8,10 +8,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class TaskConfigurationImpl implements TaskConfiguration {
 
-    private final IntegerProperty runDelayProperty = new SimpleIntegerProperty();
-    private final BooleanProperty runExceptionProperty = new SimpleBooleanProperty();
-    private final IntegerProperty fallbackDelayProperty = new SimpleIntegerProperty();
-    private final BooleanProperty fallbackExceptionProperty = new SimpleBooleanProperty();
+    private final IntegerProperty runDelayProperty = new SimpleIntegerProperty(this, "runDelay");
+    private final BooleanProperty runExceptionProperty = new SimpleBooleanProperty(this, "runException");
+    private final IntegerProperty fallbackDelayProperty = new SimpleIntegerProperty(this, "fallbackDelay");
+    private final BooleanProperty fallbackExceptionProperty = new SimpleBooleanProperty(this, "fallbackException");
 
     // --------------------------------
     // Run Delay
