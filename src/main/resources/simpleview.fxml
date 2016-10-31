@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitsetd4d.view.SimpleViewController">
+   <children>
+      <Slider fx:id="tasksSlider" layoutX="108.0" layoutY="22.0" max="1000.0" prefHeight="16.0" prefWidth="410.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="5.0" />
+      <Label layoutX="16.0" layoutY="14.0" text="Tasks" AnchorPane.topAnchor="5.0" />
+      <Label layoutX="14.0" layoutY="40.0" text="Threads" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
+      <Slider fx:id="threadsSlider" layoutX="108.0" layoutY="40.0" max="1000.0" prefHeight="16.0" prefWidth="410.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0" />
+      <Button fx:id="startButton" layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Start" />
+      <Button fx:id="stopButton" layoutX="65.0" layoutY="65.0" mnemonicParsing="false" text="Stop" />
+      <ProgressIndicator fx:id="identityProgressIndicator" layoutX="122.0" layoutY="65.0" prefHeight="27.0" prefWidth="17.0" />
+      <Label fx:id="runningLabel" layoutX="145.0" layoutY="70.0" text="Running..." />
+      <TreeTableView fx:id="resultsTreeTableView" layoutX="12.0" layoutY="102.0" prefHeight="252.0" prefWidth="516.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="102.0">
+        <columns>
+          <TreeTableColumn fx:id="stateColumn" prefWidth="75.0" text="State" />
+          <TreeTableColumn fx:id="timeColumn" prefWidth="49.0" text="Time" />
+            <TreeTableColumn fx:id="threadColumn" prefWidth="131.0" text="Thread" />
+            <TreeTableColumn fx:id="commentColumn" prefWidth="257.0" text="Comment" />
+        </columns>
+      </TreeTableView>
+      <Label fx:id="feedbackLabel" layoutX="105.0" layoutY="48.0" text="FEEDBACK" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="44.0" />
+   </children>
+</AnchorPane>

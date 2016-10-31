@@ -2,8 +2,8 @@ package com.bitsetd4d.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -13,13 +13,16 @@ public class SimpleViewController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(SimpleViewController.class.getResource("/simpleview.fxml"));
         try {
-            AnchorPane ap = loader.load();
+            loader.load();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
         return loader.getController();
     }
+
+    @FXML
+    private Parent parent;
 
     @FXML
     private Slider tasksSlider;
@@ -35,6 +38,9 @@ public class SimpleViewController {
 
     @FXML
     private ProgressIndicator identityProgressIndicator;
+
+    @FXML
+    private Label feedbackLabel;
 
     @FXML
     private Label runningLabel;
@@ -53,6 +59,10 @@ public class SimpleViewController {
 
     @FXML
     private TreeTableColumn commentColumn;
+
+    public Parent getParent() {
+        return parent;
+    }
 
     public Slider getTasksSlider() {
         return tasksSlider;
@@ -78,6 +88,10 @@ public class SimpleViewController {
         return runningLabel;
     }
 
+    public Label getFeedbackLabel() {
+        return feedbackLabel;
+    }
+
     public TreeTableView getResultsTreeTableView() {
         return resultsTreeTableView;
     }
@@ -97,4 +111,5 @@ public class SimpleViewController {
     public TreeTableColumn getCommentColumn() {
         return commentColumn;
     }
+
 }
